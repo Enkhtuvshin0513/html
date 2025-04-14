@@ -10,66 +10,37 @@
     </main>
     <footer><address>2025 All rights reserverd.</address></footer>
     <script>
-      const articles = [
-        {
-          title: "Title 1",
-          author: "Jane doe",
-          content:
-            "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theuse Lorem Ipsum as their default model text, and a search for 'lorem"
-        },
-        {
-          title: "Title 2",
-          author: "Jane doe",
-          content:
-            "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theuse Lorem Ipsum as their default model text, and a search for 'lorem"
-        },
-        {
-          title: "Title 3",
-          author: "Jane doe",
-          content:
-            "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theuse Lorem Ipsum as their default model text, and a search for 'lorem"
+      const getData = async () => {
+        const result = await fetch("https://www.freetestapi.com/api/v1/movies");
+
+        return result.json();
+      };
+
+      const renderData = async () => {
+        const datas = await getData();
+
+        for (const data of datas) {
+          const articleElement = document.createElement("article");
+          const headerElement = document.createElement("h1");
+          const paragraphElement = document.createElement("p");
+          const autherElement = document.createElement("p");
+
+          headerElement.innerText = data.title;
+          paragraphElement.innerText = data.content;
+
+          autherElement.innerText = data.author;
+
+          articleElement.appendChild(headerElement);
+
+          articleElement.appendChild(paragraphElement);
+
+          articleElement.appendChild(autherElement);
+
+          document.getElementById("articles").appendChild(articleElement);
         }
-      ];
+      };
 
-      for (const article of articles) {
-        const articleElement = document.createElement("article");
-        const headerElement = document.createElement("h1");
-        const paragraphElement = document.createElement("p");
-        const autherElement = document.createElement("p");
-
-        // <article></article>
-        // <h1></h1>
-        // <p></p>
-        // <p></p>
-
-        headerElement.innerText = article.title;
-        // <h1>Title 1</h1>
-        paragraphElement.innerText = article.content;
-        // <p>content</p>
-        autherElement.innerText = article.author;
-        // <p>Jhon doe</p>
-
-        articleElement.appendChild(headerElement);
-        // <article>
-        //   <h1></h1>
-        // </article>;
-
-        articleElement.appendChild(paragraphElement);
-        // <article>
-        //   <h1></h1>
-        // <p></p>
-        // </article>;
-
-        articleElement.appendChild(autherElement);
-
-        // <article>
-        //   <h1></h1>
-        // <p></p>
-        // <p></p>
-        // </article>;
-
-        document.getElementById("articles").appendChild(articleElement);
-      }
+      renderData();
     </script>
   </body>
 </html>
