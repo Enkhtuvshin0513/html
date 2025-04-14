@@ -6,45 +6,69 @@
       <span> Sharing toughts and ideas with the world </span>
     </header>
     <main>
-      <div id="articles"></div>
+      <div id="articles" style="background-color: aqua"></div>
     </main>
     <footer><address>2025 All rights reserverd.</address></footer>
     <script>
       const articles = [
         {
-          title: "Title",
+          title: "Title 1",
           author: "Jane doe",
           content:
             "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theuse Lorem Ipsum as their default model text, and a search for 'lorem"
         },
         {
-          title: "Title",
+          title: "Title 2",
           author: "Jane doe",
           content:
             "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theuse Lorem Ipsum as their default model text, and a search for 'lorem"
         },
         {
-          title: "Title",
+          title: "Title 3",
           author: "Jane doe",
           content:
             "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theuse Lorem Ipsum as their default model text, and a search for 'lorem"
         }
       ];
 
-      const div = document.getElementById("articles");
-
       for (const article of articles) {
         const articleElement = document.createElement("article");
         const headerElement = document.createElement("h1");
         const paragraphElement = document.createElement("p");
+        const autherElement = document.createElement("p");
+
+        // <article></article>
+        // <h1></h1>
+        // <p></p>
+        // <p></p>
 
         headerElement.innerText = article.title;
+        // <h1>Title 1</h1>
         paragraphElement.innerText = article.content;
+        // <p>content</p>
+        autherElement.innerText = article.author;
+        // <p>Jhon doe</p>
 
         articleElement.appendChild(headerElement);
-        articleElement.appendChild(paragraphElement);
+        // <article>
+        //   <h1></h1>
+        // </article>;
 
-        div.appendChild(articleElement);
+        articleElement.appendChild(paragraphElement);
+        // <article>
+        //   <h1></h1>
+        // <p></p>
+        // </article>;
+
+        articleElement.appendChild(autherElement);
+
+        // <article>
+        //   <h1></h1>
+        // <p></p>
+        // <p></p>
+        // </article>;
+
+        document.getElementById("articles").appendChild(articleElement);
       }
     </script>
   </body>
